@@ -1,0 +1,148 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+#include "CalculadoraRecursiva.h"
+
+using namespace std;
+
+int main() {
+
+    CalculadoraRecursiva calc;
+
+    int opcion, a, b;
+    int resultado = 0;
+
+    string operacion = "";
+
+    do {
+
+        cout << "\n EJERCICIO 14 RECURSIVIDAD " << endl;
+        cout << "1. Multiplicacion" << endl;
+        cout << "2. Division" << endl;
+        cout << "3. Potencia" << endl;
+        cout << "4. Factorial" << endl;
+        cout << "5. Fibonacci" << endl;
+        cout << "6. Salir" << endl;
+        cout << "Seleccione opcion: ";
+        cin >> opcion;
+
+        switch(opcion) {
+
+            case 1:
+
+                cout << "Ingresa dos numeros: ";
+                cin >> a >> b;
+
+                resultado = calc.multiplicar(a, b);
+                operacion = "Multiplicacion";
+
+                cout << "Resultado: " << resultado << endl;
+
+                break;
+
+            case 2:
+
+                cout << "Ingresa dividendo y divisor: ";
+                cin >> a >> b;
+
+                resultado = calc.dividir(a, b);
+                operacion = "Division";
+
+                cout << "Resultado: " << resultado << endl;
+
+                break;
+
+            case 3:
+
+                cout << "Ingresa base y exponente: ";
+                cin >> a >> b;
+
+                resultado = calc.potencia(a, b);
+                operacion = "Potencia";
+
+                cout << "Resultado: " << resultado << endl;
+
+                break;
+
+            case 4:
+
+                cout << "Ingresa numero: ";
+                cin >> a;
+
+                resultado = calc.factorial(a);
+                operacion = "Factorial";
+
+                cout << "Factorial: " << resultado << endl;
+
+                break;
+
+            case 5:
+
+                cout << "Ingresa posicion: ";
+                cin >> a;
+
+                resultado = calc.fibonacci(a);
+                operacion = "Fibonacci";
+
+                cout << "Fibonacci: " << resultado << endl;
+
+                break;
+        }
+
+        if(opcion >= 1 && opcion <= 5){
+
+            // TXT
+            ofstream txt("datos.txt");
+
+            txt << "Operacion: " << operacion << endl;
+            txt << "Resultado: " << resultado << endl;
+
+            txt.close();
+
+            // CSV
+            ofstream csv("datos.csv");
+
+            csv << "Operacion,Resultado" << endl;
+            csv << operacion << "," << resultado << endl;
+
+            csv.close();
+
+            // XML
+            ofstream xml("datos.xml");
+
+            xml << "<?xml version=\"1.0\"?>" << endl;
+            xml << "<datos>" << endl;
+            xml << "<operacion>" << operacion << "</operacion>" << endl;
+            xml << "<resultado>" << resultado << "</resultado>" << endl;
+            xml << "</datos>" << endl;
+
+            xml.close();
+
+            // HTML
+            ofstream html("datos.html");
+
+            html << "<html>" << endl;
+            html << "<body>" << endl;
+            html << "<h1>" << operacion << "</h1>" << endl;
+            html << "<p>Resultado: " << resultado << "</p>" << endl;
+            html << "</body>" << endl;
+            html << "</html>" << endl;
+
+            html.close();
+
+            // JSON
+            ofstream json("datos.json");
+
+            json << "{" << endl;
+            json << "\"operacion\":\"" << operacion << "\"," << endl;
+            json << "\"resultado\":" << resultado << endl;
+            json << "}" << endl;
+
+            json.close();
+        }
+
+    } while(opcion != 6);
+
+    return 0;
+}
