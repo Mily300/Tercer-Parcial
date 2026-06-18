@@ -1,0 +1,8 @@
+<arbol>
+    <conexion origen="A" destino="B" peso="4"/>
+    <conexion origen="A" destino="C" peso="2"/>
+    <conexion origen="B" destino="D" peso="5"/>
+    <conexion origen="B" destino="E" peso="3"/>
+    <conexion origen="C" destino="F" peso="6"/>
+    <conexion origen="C" destino="G" peso="8"/>
+</arbol>
